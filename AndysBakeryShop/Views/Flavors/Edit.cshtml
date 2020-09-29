@@ -1,0 +1,16 @@
+@{ Layout = "_Layout"; }
+@model AndysBakery.Models.Flavor
+
+<div class="links">
+  <h4><a href="/flavors">Back to flavors</a></h4>
+</div>
+<h1>Edit Flavor Information</h1>
+<h4>@Model.Description</h4>
+<form asp-controller="Flavors" asp-action="Edit" method="POST">
+  <input type="hidden" name="FlavorId" value="@Model.FlavorId" />
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input class="form-control" type="text" id="description" name="description" required/>
+  </div>
+  <input type="submit" value="Edit" class="btn" />
+</form>

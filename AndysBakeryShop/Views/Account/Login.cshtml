@@ -1,0 +1,32 @@
+@{ Layout = "_Layout"; } 
+@using AndysBakery.ViewModels 
+@model LoginViewModel
+
+<h1>Log in with your account</h1>
+<form asp-controller="Account" asp-action="Login" method="POST">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      class="form-control"
+      type="text"
+      id="email"
+      name="email"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      class="form-control"
+      type="text"
+      id="password"
+      name="password"
+      required
+    />
+  </div>
+  <input type="submit" value="Log in" class="btn btn-default" />
+</form>
+<div class="links">
+  <a href="/">Back</a>
+  <a href="/register">No account? Register</a>
+</div>

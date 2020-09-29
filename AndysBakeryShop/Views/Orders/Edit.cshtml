@@ -1,0 +1,22 @@
+@{ Layout = "_Layout"; } 
+@using AndysBakery.ViewModels;
+@model AndysBakery.Models.Order
+
+<div class="links">
+  <a href="/orders">Back to orders</a>
+</div>
+<h1>Edit Order</h1>
+<form asp-controller="Orders" asp-action="Edit" method="POST">
+  <input type="hidden" name="id" value="@Model.OrderId" />
+  <label for="FlavorTreatId">Select a flavor treat</label>
+  <select class="form-control" name="FlavorTreatId" required>
+    @foreach (FlavorTreatViewModel item in ViewBag.FlavorTreats) {
+    <option value="@item.FlavorTreatId">@item.Description</option>
+    }
+  </select>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input class="form-control" type="number" name="quantity" required/>
+  </div>
+  <input type="submit" value="Edit order" class="btn btn-default" />
+</form>

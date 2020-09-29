@@ -1,0 +1,18 @@
+@{ Layout = "_Layout"; } @using AndysBakery.ViewModels; 
+@model IEnumerable<AndysBakery.ViewModels.OrderViewModel>
+<div class="links">
+  <a href="/contactus">Questions</a>
+  <a href="/orders/create">Place an order</a>
+</div>
+<h1>Order History</h1>
+@if(Model.Any()) {
+<ul>
+  @foreach(OrderViewModel order in Model) {
+  <li>
+    <a href="/orders/details/@order.OrderId">$@order.Price on @order.Date.ToShortDateString()</a>
+  </li>
+  }
+</ul>
+} else {
+<h3>No orders placed yet</h3>
+}

@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+@model AndysBakery.Models.Treat
+<h1>Are you sure you want to delete this treat?</h1>
+<p>@Model.Description</p>
+<form asp-controller="Treats" action="Delete" method="POST">
+  <input type="hidden" name="id" value="@Model.TreatId" />
+  <input type="submit" value="Delete" class='btn'/>
+</form>
+<div class='links'>
+  <a href="/treats">Back to all treats</a>
+</div>

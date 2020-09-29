@@ -1,0 +1,23 @@
+@{ Layout = "_Layout"; }
+@using Microsoft.AspNetCore.Authorization 
+@inject IAuthorizationService AuthorizationService
+
+@if (User.Identity.IsAuthenticated) {
+<h1>Welcome @User.Identity.Name</h1>
+<form asp-controller="Account" asp-action="LogOff" method="POST">
+  <input type="submit" class="btn btn-default" value="Log out" />
+</form>
+<div class="row">
+  <div class="col-sm-6">
+    <h4><a href="/orders">View my orders</a></h4>
+  </div>
+  <div class="col-sm-6">
+    <h4><a href="/orders/create">Place a new order</a></h4>
+  </div>
+</div>
+} else {
+<a href="/login">LOGIN</a>
+}
+@if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) {
+  <a href="/flavors/create">Add a new flavor</a>
+}

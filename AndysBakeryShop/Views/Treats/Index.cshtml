@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+@using AndysBakery.Models;
+@model IEnumerable<AndysBakery.Models.Treat>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+
+@if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+{
+<div class='links'>
+  <a href="/treats/create">Add a new treat</a>
+</div>
+}
+@if(Model.Any())
+{
+<h1>Our Treats</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<ul>
+@foreach(Treat treat in Model)
+{
+ <li><a href="/treats/details/@(treat.TreatId)">@treat.Description</a></li>
+}
+</ul>
+}
+
+
+else
+{
+  <h3>No treats available</h3>
+}

@@ -1,0 +1,12 @@
+@{ Layout = "_Layout"; }
+@model AndysBakery.Models.Flavor
+
+<div class="links">
+  <h4><a href="/flavors">Back to flavors</a></h4>
+</div>
+<h1>Are you sure you want to delete this flavor?</h1>
+<p>@Model.Description</p>
+<form asp-controller="Flavors" action="Delete" method="POST">
+  <input type="hidden" name="id" value="@Model.FlavorId" />
+  <input type="submit" value="Delete" class="btn btn-default"/>
+</form>

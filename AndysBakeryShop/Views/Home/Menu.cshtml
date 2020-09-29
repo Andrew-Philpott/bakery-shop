@@ -1,0 +1,25 @@
+@{ Layout = "_Layout"; }
+@using AndysBakery.Models;
+<h1>Our selection</h1>
+<div class="row">
+  <div class="col-sm-6">
+    @if(ViewBag.Treats.Count != 0){
+      <h1>Treats</h1>
+      @foreach(Treat treat in ViewBag.Treats) {
+      <h4>
+        <a href="/treats/details/@(treat.TreatId)">@treat.Description</a>
+      </h4>
+      }
+    }
+  </div>
+  <div class="col-sm-6">
+    @if(ViewBag.Flavors.Count != 0){
+      <h1>Flavors</h1>
+      @foreach(Flavor flavor in ViewBag.Flavors) {
+      <h4>
+        <a href="/flavors/details/@(flavor.FlavorId)">@flavor.Description </a>
+      </h4>
+      }
+    }
+  </div>
+</div>

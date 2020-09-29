@@ -1,0 +1,16 @@
+@{ Layout = "_Layout"; }
+@using AndysBakery.Models; 
+@model AndysBakery.Models.Order;
+
+<div class="links">
+  <a href="/orders">Back to your orders</a>
+  <a href="/orders/edit/@Model.OrderId">Edit order</a>
+  <a href="/orders/create">Place an order</a>
+  <a href="/orders/delete/@Model.OrderId">Delete order</a>
+</div>
+<h1>Order Details</h1>
+<h2>@($"Ordered: {Model.Date.ToShortDateString()}")</h2>
+@foreach (OrderDetailsViewModel item in ViewBag.OrderDetails) {
+  <h2>@($"{item.Quantity} {item.Description} at ${item.Price}/pc for ${item.Price *  item.Quantity}")
+  </h2>
+}
